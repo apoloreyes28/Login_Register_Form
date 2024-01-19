@@ -1,12 +1,11 @@
-import React from 'react'
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 // creamos un enrutador de React
 import { useNavigate } from "react-router-dom";
 
-function Signup () {
+function Signup(){
     // variables para almacenar los datos introducidos en los campos de texto
     // estos son Ganchos = Hooks
 
@@ -22,7 +21,6 @@ function Signup () {
     // Enrutador
     const navigate = useNavigate();// creamos una instancia
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -35,13 +33,14 @@ function Signup () {
         .catch(err => console.log(err))
     }
 
-    return (
+    // todas estas clases: d-flex bg-white w-25.... vienen de Bootstrap
+    return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
             <div className="bg-white p-3 rounded w-25">
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                <label htmlFor="email">
+                <h2>Register</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="email">
                             <strong>Name</strong>
                         </label>
                         <input 
@@ -54,9 +53,9 @@ function Signup () {
                             onChange={(e)=> setName(e.target.value)}
                             // le asignamos el valor que estamos escribiendo en el campo de entrada (texto)
                         />
-                </div>
-                <div className="mb-3">
-                <label htmlFor="email">
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="email">
                             <strong>Email</strong>
                         </label>
                         <input 
@@ -69,9 +68,9 @@ function Signup () {
                             onChange={(e)=> setEmail(e.target.value)}
                             // le asignamos el valor que estamos escribiendo en el campo de entrada (texto)
                         />
-                </div>
-                <div className="mb-3">
-                <label htmlFor="email">
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="email">
                             <strong>Password</strong>
                         </label>
                         <input 
@@ -84,17 +83,16 @@ function Signup () {
                             onChange={(e)=> setPassword(e.target.value)}
                             // le asignamos el valor que estamos escribiendo en el campo de entrada (texto)
                         />
-                </div>
-                <button type="submit" className="btn btn-success w-100 rounded-0">
-                    Register
-                </button>
-            </form>
-            <p>Already Have a Account?</p>
-            <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-                Login
-            </Link>
+                    </div>
+                    <button type="submit" className="btn btn-success w-100 rounded-0">
+                        Register
+                    </button>
+                </form>
+                    <p>Already Have a Account?</p>
+                    <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
+                        Login
+                    </Link>
             </div>
-            
         </div>
     );
 }
