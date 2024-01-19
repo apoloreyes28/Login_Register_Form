@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
+// creamos un enrutador de React
+import { useNavigate } from "react-router-dom";
+
 function Signup () {
     // variables para almacenar los datos introducidos en los campos de texto
     // estos son Ganchos = Hooks
@@ -16,12 +19,19 @@ function Signup () {
     // Password
     const [password, setPassword] = useState();
 
+    // Enrutador
+    const navigate = useNavigate();// creamos una instancia
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         
         // pasamos los datos
         axios.post('http://localhost:3001/register', {name, email, password})
-        .then(result => console.log(result))
+        .then(result => {console.log(result)
+            navigate('/login')
+
+        })
         .catch(err => console.log(err))
     }
 
